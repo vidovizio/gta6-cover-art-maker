@@ -1,23 +1,126 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
-<link rel="stylesheet" href="./style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100e20">
+  <title>VICE SUNSET — Cover Studio</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
-  </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
-</main>
-<script type="module" src="./src/main.js"></script>
+  <main class="studio">
+    <aside class="sidebar">
+      <header class="brand">
+        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div><p class="eyebrow">AFTER HOURS / CREATIVE STUDIO</p><h1>VICE <i>SUNSET</i></h1></div>
+      </header>
+      <p class="intro">Turn your city into a story. Build a cinematic cover, made entirely on your device.</p>
+
+      <section class="control-section photo-section">
+        <div class="section-heading"><span>01</span><h2>Your photographs</h2></div>
+        <label class="upload-button" for="photo-files"><span class="upload-icon">＋</span><span><b>Add photos</b><small>JPG, PNG, WEBP · stored only here</small></span><input id="photo-files" type="file" accept="image/*" multiple></label>
+        <div class="sample-row">
+          <button type="button" class="sample-button" data-sample="pier">Pier at dusk <span>↗</span></button>
+          <button type="button" class="sample-button" data-sample="boulevard">Neon boulevard <span>↗</span></button>
+        </div>
+        <p class="micro-copy" id="photo-count">Add photos, then tap a panel below to choose where they appear.</p>
+        <div class="panel-picker" id="panel-picker" aria-label="Select an image panel"></div>
+      </section>
+
+      <section class="control-section">
+        <div class="section-heading"><span>02</span><h2>Poster layout</h2></div>
+        <div class="field-grid">
+          <label class="field">Post size
+            <select id="format">
+              <option value="square">Square · 1080 × 1080</option>
+              <option value="portrait">Portrait · 1080 × 1350</option>
+              <option value="landscape">Landscape · 1920 × 1080</option>
+            </select>
+          </label>
+          <label class="field">Image panels
+            <select id="panel-count">
+              <option value="2">Two frames</option>
+              <option value="3" selected>Three frames</option>
+              <option value="4">Four frames</option>
+            </select>
+          </label>
+        </div>
+        <div class="field-grid panel-tools">
+          <label class="field">Selected panel
+            <span class="field-value" id="selected-panel">Panel 1</span>
+          </label>
+          <label class="field">Image fit
+            <select id="image-fit">
+              <option value="cover">Fill frame</option>
+              <option value="fit">Fit whole photo</option>
+            </select>
+          </label>
+        </div>
+        <label class="field slider-field">Panel zoom <output id="zoom-value">100%</output>
+          <input id="zoom" type="range" min="100" max="250" value="100">
+        </label>
+        <div class="grade-row">
+          <label class="field">Color grade
+            <select id="grade">
+              <option value="sunset">Sunset bloom</option>
+              <option value="neon">Neon fever</option>
+              <option value="noir">Midnight noir</option>
+              <option value="gold">Golden hour</option>
+            </select>
+          </label>
+          <label class="switch-field"><input id="grain" type="checkbox" checked><span class="switch"></span><span>Film grain</span></label>
+        </div>
+      </section>
+
+      <section class="control-section caption-section">
+        <div class="section-heading"><span>03</span><h2>Make the headline</h2></div>
+        <label class="field">Main title
+          <input id="title" type="text" maxlength="34" value="Sunset Heist" autocomplete="off">
+        </label>
+        <label class="field">Subtitle <span class="optional">OPTIONAL</span>
+          <input id="subtitle" type="text" maxlength="54" value="A CITY BUILT FOR THE AFTER HOURS" autocomplete="off">
+        </label>
+        <div class="field-grid type-tools">
+          <label class="field">Letter color
+            <span class="color-control"><input id="letter-color" type="color" value="#fff5df"><span id="color-label">#FFF5DF</span></span>
+          </label>
+          <label class="field">Placement
+            <select id="caption-position"><option value="bottom">Bottom</option><option value="top">Top</option></select>
+          </label>
+        </div>
+        <label class="field slider-field">Headline scale <output id="size-value">12%</output>
+          <input id="type-size" type="range" min="7" max="18" value="12">
+        </label>
+        <div class="toggle-row">
+          <label class="check-field"><input id="outline" type="checkbox" checked><span>Ink outline</span></label>
+          <label class="check-field"><input id="shadow" type="checkbox" checked><span>Neon shadow</span></label>
+          <label class="check-field"><input id="sticker" type="checkbox" checked><span>Series badge</span></label>
+        </div>
+      </section>
+
+      <footer class="sidebar-footer">
+        <button id="export" class="export-button" type="button"><span>Download poster</span><b>PNG ↗</b></button>
+        <p id="status" role="status">Ready when you are · PNG, full resolution</p>
+        <div class="privacy-note"><span class="privacy-dot"></span> Your photos never leave this browser.</div>
+      </footer>
+    </aside>
+
+    <section class="workspace" aria-label="Poster preview workspace">
+      <div class="workspace-top">
+        <div><p class="eyebrow">YOUR COVER / LIVE PREVIEW</p><h2>Set the scene.</h2></div>
+        <div class="preview-meta"><span class="live-dot"></span> LIVE CANVAS <span class="meta-divider"></span><span id="dimension-label">1080 × 1080</span></div>
+      </div>
+      <div class="canvas-wrap" id="drop-zone">
+        <canvas id="cover" width="1080" height="1080" aria-label="Live poster preview"></canvas>
+        <div class="drop-hint" id="drop-hint"><b>Drop a photo into the story</b><span>Release to fill the selected frame</span></div>
+      </div>
+      <div class="workspace-bottom">
+        <p><span class="drag-symbol">✣</span> Drag the image to reframe it <i>·</i> Tap a panel to edit it</p>
+        <span class="preview-note">PREVIEW IS THE EXPORT</span>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
