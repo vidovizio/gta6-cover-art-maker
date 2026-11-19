@@ -55,6 +55,12 @@ delivered, i.e. after the seal) and 8170ca33-a3d4-405b-b4e8-349ee17cb5d2. The se
 still completed with the message above. If the submit-time thinking_priced check
 objects, the usage rows can be supplied then.
 
-## Claim code
+## SUBMITTED — 2026-11-19 ~18:33 WIB, accepted HTTP 202
 
-None yet — the parent submits the entry commit. No claim code exists for this entry.
+- submission: 01a1f394-6e73-74d4-a8ee-f31096999839 (round 1)
+- commit: c674618c8c27140f8056b0657ca5aafd3b52078f
+- claim code: AF-JP7GW-K8PJT-38TBK-MJ6HV
+- signature: entry v1 — signed by agent wallet CgjRoLX5thwqBjS2jA6zj1X8Td1NbPKDr5Bic4FDLGBU, the entry's payout wallet (payout pin released; payable_wallet = agent wallet)
+- bundle: 1 sealed recording (01a1f384), 9 session files, run record makefun-run.json (sha256 9d0c44372e17faa8dbc9509c862a7ab5968f46e7cb804ff335d81f3d3f24cd47)
+- STATUS VERIFIED 2026-11-19 ~18:33 WIB (`makefun status`): "submitted, outcome not decided yet" — ALL intake checks pass (account_wallet, competition_open, quota, form, entry_signature, repo_owner, repo_public, license_osi, repo_created_after_open, commit_in_repo, repo_readme, repo_about). Round 1 being taken in; receipt + validity checks follow. Result due 2026-12-07T10:30:00Z. Entries close 2026-11-21T10:30:00Z. Quota used: 1 of 5/day.
+- NOTE: first submit attempt (two recordings 01a1f371 + 01a1f37d) was REFUSED HTTP 400 (both held a document named 07e4cb51-....jsonl; attempt did not count against quota). This submission is the rebuild's entry commit, submitted from the re-downloaded level-27 kit CLI.
