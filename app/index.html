@@ -1,126 +1,125 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#100e20">
-  <title>VICE SUNSET — Cover Studio</title>
-  <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <main class="studio">
-    <aside class="sidebar">
-      <header class="brand">
-        <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div><p class="eyebrow">AFTER HOURS / CREATIVE STUDIO</p><h1>VICE <i>SUNSET</i></h1></div>
-      </header>
-      <p class="intro">Turn your city into a story. Build a cinematic cover, made entirely on your device.</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11131b">
+    <title>VICE SUNSET — cover studio</title>
+    <link rel="stylesheet" href="./style.css">
+    <script defer src="./src/main.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Vice Sunset home">
+        <span class="brand-mark">VS</span>
+        <span class="brand-name">VICE <b>SUNSET</b><small>AFTER HOURS / COVER STUDIO</small></span>
+      </a>
+      <div class="top-note"><span class="live-dot"></span> LOCAL CREATIVE STUDIO <i></i> NO UPLOADS</div>
+      <button class="export-button" id="exportButton" type="button"><span>↓</span> Export PNG <kbd>↵</kbd></button>
+    </header>
 
-      <section class="control-section photo-section">
-        <div class="section-heading"><span>01</span><h2>Your photographs</h2></div>
-        <label class="upload-button" for="photo-files"><span class="upload-icon">＋</span><span><b>Add photos</b><small>JPG, PNG, WEBP · stored only here</small></span><input id="photo-files" type="file" accept="image/*" multiple></label>
-        <div class="sample-row">
-          <button type="button" class="sample-button" data-sample="pier">Pier at dusk <span>↗</span></button>
-          <button type="button" class="sample-button" data-sample="boulevard">Neon boulevard <span>↗</span></button>
+    <main class="workspace">
+      <aside class="control-rail" aria-label="Cover controls">
+        <div class="rail-intro">
+          <div class="eyebrow"><span>01</span> MAKE IT YOURS</div>
+          <h1>Build your<br><em>after-hours</em> story.</h1>
+          <p>One photo. A whole city after dark.</p>
         </div>
-        <p class="micro-copy" id="photo-count">Add photos, then tap a panel below to choose where they appear.</p>
-        <div class="panel-picker" id="panel-picker" aria-label="Select an image panel"></div>
+
+        <section class="control-section">
+          <div class="section-heading"><span class="section-number">01</span><h2>Choose your scene</h2><span class="step-dash"></span></div>
+          <div class="sample-list">
+            <button class="sample-card active" type="button" data-sample="boulevard">
+              <img src="./samples/boulevard.jpg" alt="">
+              <span><b>BOULEVARD</b><small>Golden hour · 01</small></span>
+              <span class="sample-plus">+</span>
+            </button>
+            <button class="sample-card" type="button" data-sample="pier">
+              <img src="./samples/pier.jpg" alt="">
+              <span><b>THE PIER</b><small>Blue hour · 02</small></span>
+              <span class="sample-plus">+</span>
+            </button>
+          </div>
+          <label class="upload-button" for="photoInput"><span class="upload-icon">↥</span><span>Add your photos<small>JPG or PNG · stays on this device</small></span><b>+</b></label>
+          <input id="photoInput" type="file" accept="image/*" multiple hidden>
+          <div id="photoLibrary" class="photo-library" aria-live="polite"></div>
+        </section>
+
+        <section class="control-section">
+          <div class="section-heading"><span class="section-number">02</span><h2>Compose the frame</h2><span class="step-dash"></span></div>
+          <label class="field-label" for="sizeSelect">POST SIZE <span>OUTPUT</span></label>
+          <select id="sizeSelect" class="select-control">
+            <option value="square">Square · 1080 × 1080</option>
+            <option value="portrait">Portrait · 1080 × 1350</option>
+            <option value="landscape">Landscape · 1920 × 1080</option>
+          </select>
+          <div class="control-pair">
+            <label class="field-label" for="panelCount">PANELS</label>
+            <select id="panelCount" class="select-control compact">
+              <option value="2">02 — Diptych</option>
+              <option value="3" selected>03 — Triptych</option>
+              <option value="4">04 — Collage</option>
+            </select>
+          </div>
+          <div id="panelControls" class="panel-controls"></div>
+          <button id="fillAllButton" class="fill-all" type="button"><span>↗</span> Use selected photo in every panel</button>
+          <div class="pan-hint"><span>✣</span> Drag a panel to reframe · zoom below</div>
+          <label class="field-label zoom-label" for="zoomSlider">PANEL ZOOM <output id="zoomValue">1.0×</output></label>
+          <input id="zoomSlider" class="range-control" type="range" min="1" max="2.4" step="0.05" value="1">
+        </section>
+
+        <section class="control-section">
+          <div class="section-heading"><span class="section-number">03</span><h2>Set the headline</h2><span class="step-dash"></span></div>
+          <label class="field-label" for="titleInput">TITLE <span>BIG FEELINGS</span></label>
+          <input id="titleInput" class="text-control title-input" maxlength="28" value="SUNSET HEIST">
+          <label class="field-label" for="subtitleInput">SUBTITLE <span>OPTIONAL</span></label>
+          <input id="subtitleInput" class="text-control" maxlength="48" value="THE NIGHT IS OURS">
+          <div class="control-pair">
+            <div class="color-wrap"><label class="field-label" for="textColor">INK</label><label class="color-picker"><input id="textColor" type="color" value="#fff5df"><span id="colorName">WARM IVORY</span></label></div>
+            <div class="control-wrap"><label class="field-label" for="fontSize">TYPE SCALE</label><input id="fontSize" class="range-control" type="range" min="7" max="15" value="11"></div>
+          </div>
+          <div class="segmented" role="group" aria-label="Caption position">
+            <button type="button" data-position="low" class="selected">LOW</button>
+            <button type="button" data-position="center">CENTER</button>
+            <button type="button" data-position="high">HIGH</button>
+          </div>
+          <div class="caption-effects" aria-label="Caption effects">
+            <button type="button" id="outlineToggle" class="effect-toggle on" aria-pressed="true">◌ OUTLINE</button>
+            <button type="button" id="shadowToggle" class="effect-toggle on" aria-pressed="true">▱ SHADOW</button>
+          </div>
+        </section>
+
+        <section class="control-section last-section">
+          <div class="section-heading"><span class="section-number">04</span><h2>Dial in the mood</h2><span class="step-dash"></span></div>
+          <div class="preset-row" role="group" aria-label="Colour grade">
+            <button class="preset active" data-preset="sunset" type="button"><i class="swatch sunset-swatch"></i><span>SUNSET</span></button>
+            <button class="preset" data-preset="neon" type="button"><i class="swatch neon-swatch"></i><span>NEON</span></button>
+            <button class="preset" data-preset="noir" type="button"><i class="swatch noir-swatch"></i><span>NOIR</span></button>
+          </div>
+          <div class="toggle-row"><span><b>Film grain</b><small>35mm texture</small></span><button class="switch on" id="grainToggle" type="button" aria-pressed="true"><i></i></button></div>
+          <div class="toggle-row"><span><b>Sunset glow</b><small>Colour-washed light</small></span><button class="switch on" id="glowToggle" type="button" aria-pressed="true"><i></i></button></div>
+          <div class="toggle-row"><span><b>Edition seal</b><small>Little night-shift detail</small></span><button class="switch on" id="sealToggle" type="button" aria-pressed="true"><i></i></button></div>
+        </section>
+        <footer class="rail-footer"><span>VICE SUNSET STUDIO</span><span>MADE OFFLINE <i>✦</i></span></footer>
+      </aside>
+
+      <section class="preview-zone" aria-label="Live poster preview">
+        <div class="preview-topline">
+          <div><span class="eyebrow">LIVE COMPOSITION</span><span class="preview-label">YOUR COVER, IN REAL TIME</span></div>
+          <div class="canvas-meta"><span class="canvas-dot"></span><span id="canvasSize">1080 × 1080</span><span class="meta-divider"></span><span>PNG READY</span></div>
+        </div>
+        <div class="canvas-stage">
+          <canvas id="posterCanvas" width="1080" height="1080" aria-label="Live cover art preview"></canvas>
+          <div class="stage-corner top-left"></div><div class="stage-corner top-right"></div>
+          <div class="stage-corner bottom-left"></div><div class="stage-corner bottom-right"></div>
+        </div>
+        <div class="preview-footer">
+          <div class="preview-caption"><span class="caption-glyph">✳</span><span>COMPOSITION <b id="compositionName">THE NIGHT DRIVE</b></span></div>
+          <div class="preview-tip"><span>↔</span> DRAG TO REFRAME</div>
+          <div class="preview-actions"><button type="button" id="shuffleButton">✳ <span>Surprise me</span></button><button type="button" id="resetButton">Reset</button></div>
+        </div>
       </section>
-
-      <section class="control-section">
-        <div class="section-heading"><span>02</span><h2>Poster layout</h2></div>
-        <div class="field-grid">
-          <label class="field">Post size
-            <select id="format">
-              <option value="square">Square · 1080 × 1080</option>
-              <option value="portrait">Portrait · 1080 × 1350</option>
-              <option value="landscape">Landscape · 1920 × 1080</option>
-            </select>
-          </label>
-          <label class="field">Image panels
-            <select id="panel-count">
-              <option value="2">Two frames</option>
-              <option value="3" selected>Three frames</option>
-              <option value="4">Four frames</option>
-            </select>
-          </label>
-        </div>
-        <div class="field-grid panel-tools">
-          <label class="field">Selected panel
-            <span class="field-value" id="selected-panel">Panel 1</span>
-          </label>
-          <label class="field">Image fit
-            <select id="image-fit">
-              <option value="cover">Fill frame</option>
-              <option value="fit">Fit whole photo</option>
-            </select>
-          </label>
-        </div>
-        <label class="field slider-field">Panel zoom <output id="zoom-value">100%</output>
-          <input id="zoom" type="range" min="100" max="250" value="100">
-        </label>
-        <div class="grade-row">
-          <label class="field">Color grade
-            <select id="grade">
-              <option value="sunset">Sunset bloom</option>
-              <option value="neon">Neon fever</option>
-              <option value="noir">Midnight noir</option>
-              <option value="gold">Golden hour</option>
-            </select>
-          </label>
-          <label class="switch-field"><input id="grain" type="checkbox" checked><span class="switch"></span><span>Film grain</span></label>
-        </div>
-      </section>
-
-      <section class="control-section caption-section">
-        <div class="section-heading"><span>03</span><h2>Make the headline</h2></div>
-        <label class="field">Main title
-          <input id="title" type="text" maxlength="34" value="Sunset Heist" autocomplete="off">
-        </label>
-        <label class="field">Subtitle <span class="optional">OPTIONAL</span>
-          <input id="subtitle" type="text" maxlength="54" value="A CITY BUILT FOR THE AFTER HOURS" autocomplete="off">
-        </label>
-        <div class="field-grid type-tools">
-          <label class="field">Letter color
-            <span class="color-control"><input id="letter-color" type="color" value="#fff5df"><span id="color-label">#FFF5DF</span></span>
-          </label>
-          <label class="field">Placement
-            <select id="caption-position"><option value="bottom">Bottom</option><option value="top">Top</option></select>
-          </label>
-        </div>
-        <label class="field slider-field">Headline scale <output id="size-value">12%</output>
-          <input id="type-size" type="range" min="7" max="18" value="12">
-        </label>
-        <div class="toggle-row">
-          <label class="check-field"><input id="outline" type="checkbox" checked><span>Ink outline</span></label>
-          <label class="check-field"><input id="shadow" type="checkbox" checked><span>Neon shadow</span></label>
-          <label class="check-field"><input id="sticker" type="checkbox" checked><span>Series badge</span></label>
-        </div>
-      </section>
-
-      <footer class="sidebar-footer">
-        <button id="export" class="export-button" type="button"><span>Download poster</span><b>PNG ↗</b></button>
-        <p id="status" role="status">Ready when you are · PNG, full resolution</p>
-        <div class="privacy-note"><span class="privacy-dot"></span> Your photos never leave this browser.</div>
-      </footer>
-    </aside>
-
-    <section class="workspace" aria-label="Poster preview workspace">
-      <div class="workspace-top">
-        <div><p class="eyebrow">YOUR COVER / LIVE PREVIEW</p><h2>Set the scene.</h2></div>
-        <div class="preview-meta"><span class="live-dot"></span> LIVE CANVAS <span class="meta-divider"></span><span id="dimension-label">1080 × 1080</span></div>
-      </div>
-      <div class="canvas-wrap" id="drop-zone">
-        <canvas id="cover" width="1080" height="1080" aria-label="Live poster preview"></canvas>
-        <div class="drop-hint" id="drop-hint"><b>Drop a photo into the story</b><span>Release to fill the selected frame</span></div>
-      </div>
-      <div class="workspace-bottom">
-        <p><span class="drag-symbol">✣</span> Drag the image to reframe it <i>·</i> Tap a panel to edit it</p>
-        <span class="preview-note">PREVIEW IS THE EXPORT</span>
-      </div>
-    </section>
-  </main>
-  <script type="module" src="./src/main.js"></script>
-</body>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
 </html>

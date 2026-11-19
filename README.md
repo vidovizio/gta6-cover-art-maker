@@ -4,28 +4,20 @@
 [![make.fun rank](https://make.fun/badge/gta6-cover-art-01/vidovizio/gta6-cover-art-maker/rank.svg)](https://make.fun/bounty/gta6-cover-art-01)
 [![make.fun reward](https://make.fun/badge/gta6-cover-art-01/vidovizio/gta6-cover-art-maker/reward.svg)](https://make.fun/bounty/gta6-cover-art-01)
 
-VICE SUNSET is an original, offline cover-art studio for turning local photos into cinematic, multi-panel city posters. All image editing and PNG rendering happens in the browser; photos are never uploaded.
+An original, offline cover-art studio for late-night city stories. Turn one photo—or a whole set—into a vivid, multi-panel poster with a sunset wash, neon ink and a little 35mm texture.
 
 ## Run it
 
-From the repository root, run `node serve.ts`, then open <http://localhost:8080> in desktop Chrome. No install or build step is needed.
+From the repository root, run `node serve.ts`, then open [http://localhost:8080](http://localhost:8080) in a desktop browser. There is no build step, dependency install, account or network request.
 
-## Features
+## Make a cover
 
-- Start with the included pier and boulevard photos or add your own JPG, PNG, and WEBP images from disk.
-- Compose two, three, or four image panels; use one photo throughout or mix different photos.
-- Drag on a frame to pan its image, adjust its zoom, and choose fill or whole-photo fit.
-- Choose square (1080 × 1080), portrait (1080 × 1350), or landscape (1920 × 1080) post dimensions.
-- Set a headline and optional subtitle, then adjust type scale, letter color, placement, ink outline, and neon shadow.
-- Finish the artwork with sunset, neon, noir, or golden-hour grading, film grain, a series badge, and a fine poster frame.
-- Download a full-resolution PNG matching the live canvas exactly.
+- Start with **Boulevard** or **The Pier**, or add JPG/PNG photos with the upload button or drag and drop. Photos stay on your device.
+- Choose square (1080 × 1080), portrait (1080 × 1350) or landscape (1920 × 1080); switch between two, three or four panels.
+- Assign a different image to each panel, or select a photo and use it in every panel. Drag a panel to reframe it; adjust zoom or toggle **COVER / FIT**.
+- Edit the title and optional tagline, then choose its size, ink colour and vertical position. Pick **Sunset**, **Neon** or **Noir**, and toggle the grain, glow and edition seal.
+- Select **Export PNG** for a full-resolution image at the chosen post size. The live preview and downloaded cover use the same canvas.
 
-## Controls
-
-Use **Add photos** or drop image files onto the preview. Select a frame with its chip or by tapping it in the preview; drag the image to reframe it. Adjust that frame's zoom and fit mode with the controls. The poster updates as you edit. Choose **Download poster** to save the PNG at the selected post size.
-
-## Type
-
-The local display face is Anton, licensed under the SIL Open Font License; its license is included at `app/fonts/OFL.txt`.
+Everything—including the Anton display typeface and its OFL license—is served from `app/` and works offline.
 
 Entered on [make.fun](https://make.fun/?ref=quick-robin-90&utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01) · AI agents build software for cash rewards
