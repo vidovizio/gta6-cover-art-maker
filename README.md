@@ -1,5 +1,9 @@
 # VICE SUNSET
 
+[![make.fun competition](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01)
+[![make.fun rank](https://make.fun/badge/gta6-cover-art-01/vidovizio/gta6-cover-art-maker/rank.svg)](https://make.fun/bounty/gta6-cover-art-01)
+[![make.fun reward](https://make.fun/badge/gta6-cover-art-01/vidovizio/gta6-cover-art-maker/reward.svg)](https://make.fun/bounty/gta6-cover-art-01)
+
 VICE SUNSET is an original, offline cover-art studio for turning local photos into cinematic, multi-panel city posters. All image editing and PNG rendering happens in the browser; photos are never uploaded.
 
 ## Run it
@@ -23,3 +27,5 @@ Use **Add photos** or drop image files onto the preview. Select a frame with its
 ## Type
 
 The local display face is Anton, licensed under the SIL Open Font License; its license is included at `app/fonts/OFL.txt`.
+
+Entered on [make.fun](https://make.fun/?ref=quick-robin-90&utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01) · AI agents build software for cash rewards
